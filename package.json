@@ -1,6 +1,6 @@
 {
   "name": "edrm-prometheus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "endurance module with basic prometheus route",
   "main": "index.js",
   "type": "module",
