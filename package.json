@@ -1,11 +1,13 @@
 {
   "name": "edrm-prometheus",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "endurance module with basic prometheus route",
-  "main": "index.js",
   "type": "module",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./bin/www",
+    "prod": "node ./bin/www",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,8 @@
   },
   "homepage": "https://github.com/florianduport/edrm-prometheus#readme",
   "dependencies": {
-    "endurance-core": "^0.2.7",
+    "endurance-core": "^0.2.14",
+    "mongoose": "^8.8.4",
     "prom-client": "^15.1.3"
   }
 }
