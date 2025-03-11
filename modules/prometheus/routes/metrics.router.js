@@ -1,5 +1,5 @@
 import client from 'prom-client';
-import routerBase from 'endurance-core/lib/router.js';
+import routerBase from 'endurance-core/dist/router.js';
 
 const router = routerBase();
 

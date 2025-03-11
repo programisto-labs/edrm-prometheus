@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/florianduport/edrm-prometheus#readme",
   "dependencies": {
-    "endurance-core": "^0.2.14",
+    "endurance-core": "^0.3.1",
     "mongoose": "^8.8.4",
     "prom-client": "^15.1.3"
   }
