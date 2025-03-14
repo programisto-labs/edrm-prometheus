@@ -1,13 +1,14 @@
 {
   "name": "edrm-prometheus",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "endurance module with basic prometheus route",
   "type": "module",
-  "main": "app.js",
+  "main": "dist/app.js",
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "prod": "node ./bin/www",
-    "test": "mocha"
+    "start": "node ./dist/bin/www",
+    "dev": "tsc-watch --onSuccess \"node ./dist/bin/www\"",
+    "test": "mocha",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -20,12 +21,18 @@
   },
   "homepage": "https://github.com/florianduport/edrm-prometheus#readme",
   "dependencies": {
-    "endurance-core": "^0.3.4",
+    "endurance-core": "^0.3.6",
     "mongoose": "^8.8.4",
-    "prom-client": "^15.1.3"
+    "prom-client": "^15.1.3",
+    "tsc-watch": "^6.2.1"
   },
   "devDependencies": {
+    "@types/debug": "^4.1.12",
+    "@types/jest": "^29.0.0",
+    "@types/node": "^20.17.24",
+    "concurrently": "^9.1.2",
     "ts-migrate": "^0.1.35",
+    "ts-node": "^10.0.0",
     "typescript": "^5.8.2"
   }
 }

@@ -1,8 +1,6 @@
 import client from 'prom-client';
-import routerBase from 'endurance-core/dist/router.js';
-
-const router = routerBase();
-
+import { createRouter } from 'endurance-core';
+const router = createRouter();
 const isPrometheusActivated = process.env.PROMETHEUS_ACTIVATED !== 'false';
 
 if (isPrometheusActivated) {
@@ -26,7 +24,7 @@ if (isPrometheusActivated) {
   register.registerMetric(httpRequestDurationSeconds);
   register.registerMetric(httpRequestErrorsTotal);
 
-  function getMetrics(req, res) {
+  function getMetrics(req: any, res: any) {
     const allowedIPs = [process.env.PROMETHEUS_IP_ADDRESS, '127.0.0.1', '::1'];
     if (!allowedIPs.includes(req.ip)) {
       return res.status(403).send('Access forbidden');
@@ -35,7 +33,7 @@ if (isPrometheusActivated) {
     register.metrics().then((data) => res.send(data));
   }
 
-  function collectMetrics(req, res, next) {
+  function collectMetrics(req: any, res: any, next: any) {
     const end = httpRequestDurationSeconds.startTimer();
     res.on('finish', () => {
       const labels = { method: req.method, route: req.route ? req.route.path : req.path, status_code: res.statusCode };
@@ -47,7 +45,7 @@ if (isPrometheusActivated) {
     next();
   }
 
-  router.use(collectMetrics);
+  router.use((req: any, res: any, next: any) => collectMetrics(req, res, next));
   router.get("/", getMetrics);
 }
 
