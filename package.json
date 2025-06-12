@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/florianduport/edrm-prometheus.git"
+    "url": "git+https://github.com/programisto-labs/edrm-prometheus.git"
   },
   "author": "florianduport",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/florianduport/edrm-prometheus/issues"
+    "url": "https://github.com/programisto-labs/edrm-prometheus/issues"
   },
-  "homepage": "https://github.com/florianduport/edrm-prometheus#readme",
+  "homepage": "https://github.com/programisto-labs/edrm-prometheus#readme",
   "dependencies": {
     "endurance-core": "^0.4.20",
     "mongoose": "^8.8.4",
