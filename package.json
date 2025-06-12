@@ -8,7 +8,7 @@
     "start": "node ./dist/bin/www",
     "dev": "tsc-watch --onSuccess \"node ./dist/bin/www\"",
     "test": "mocha",
-    "build": "tsc && tsc-alias",
+    "build": "tsc",
     "lint": "eslint \"**/*.{ts,tsx}\"",
     "prepare": "husky install"
   },
