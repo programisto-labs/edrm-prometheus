@@ -24,6 +24,7 @@
   "homepage": "https://github.com/programisto-labs/edrm-prometheus#readme",
   "dependencies": {
     "endurance-core": "^0.4.20",
+    "mocha": "^11.6.0",
     "mongoose": "^8.8.4",
     "prom-client": "^15.1.3",
     "tsc-watch": "^6.2.1"

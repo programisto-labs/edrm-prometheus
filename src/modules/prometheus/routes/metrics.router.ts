@@ -49,7 +49,7 @@ class PrometheusRouter extends EnduranceRouter {
         requireAuth: false
       };
 
-      this.router.use("/", (req, res, next) => {
+      this.router.use('/', (req, res, next) => {
         if (!securityOptions.requireAuth) {
           next();
         } else {
@@ -57,7 +57,7 @@ class PrometheusRouter extends EnduranceRouter {
         }
       });
 
-      this.router.get("/", (req: EnduranceRequest, res: any) =>
+      this.router.get('/', (req: EnduranceRequest, res: any) =>
         this.getMetrics(req, res, this.register));
     }
   }
