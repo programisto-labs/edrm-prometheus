@@ -1,5 +1,5 @@
 import client from 'prom-client';
-import { EnduranceRouter, type SecurityOptions, EnduranceRequest } from 'endurance-core';
+import { EnduranceRouter, SecurityOptions } from '@programisto/endurance';
 
 class PrometheusRouter extends EnduranceRouter {
   private register: any;
@@ -40,43 +40,36 @@ class PrometheusRouter extends EnduranceRouter {
     const isPrometheusActivated = process.env.PROMETHEUS_ACTIVATED !== 'false';
 
     if (isPrometheusActivated) {
-      const metricsMiddleware = (req: EnduranceRequest, res: any, next: any) =>
+      const metricsMiddleware = (req: any, res: any, next: any) =>
         this.collectMetrics(req, res, next, this.httpRequestDurationSeconds, this.httpRequestErrorsTotal);
 
       this.router.use(metricsMiddleware);
 
       const securityOptions: SecurityOptions = {
-        requireAuth: false
+        requireAuth: false,
+        permissions: []
       };
 
-      this.router.use('/', (req, res, next) => {
-        if (!securityOptions.requireAuth) {
-          next();
-        } else {
-          res.status(401).send('Unauthorized');
-        }
-      });
-
-      this.router.get('/', (req: EnduranceRequest, res: any) =>
+      this.get('/', securityOptions, (req: any, res: any) =>
         this.getMetrics(req, res, this.register));
     }
   }
 
-  private getMetrics(req: EnduranceRequest, res: any, register: any) {
+  private getMetrics(req: any, res: any, register: any) {
     const allowedIPs = [process.env.PROMETHEUS_IP_ADDRESS, '127.0.0.1', '::1'];
-    if (!allowedIPs.includes((req as any).ip)) {
+    if (!allowedIPs.includes(req.ip)) {
       return res.status(403).send('Access forbidden');
     }
     res.set('Content-Type', register.contentType);
     register.metrics().then((data: any) => res.send(data));
   }
 
-  private collectMetrics(req: EnduranceRequest, res: any, next: any, httpRequestDurationSeconds: any, httpRequestErrorsTotal: any) {
+  private collectMetrics(req: any, res: any, next: any, httpRequestDurationSeconds: any, httpRequestErrorsTotal: any) {
     const end = httpRequestDurationSeconds.startTimer();
     res.on('finish', () => {
       const labels = {
-        method: (req as any).method,
-        route: (req as any).route ? (req as any).route.path : (req as any).path,
+        method: req.method,
+        route: req.route ? req.route.path : req.path,
         status_code: res.statusCode
       };
       end(labels);
