@@ -1,3 +1,10 @@
+## [1.0.15](https://github.com/programisto-labs/edrm-prometheus/compare/v1.0.14...v1.0.15) (2025-12-17)
+
+
+### Bug Fixes
+
+* add readme ([510bf4f](https://github.com/programisto-labs/edrm-prometheus/commit/510bf4fd37290680f7ea413db89c13a9765c74b8))
+
 ## [1.0.14](https://github.com/programisto-labs/edrm-prometheus/compare/v1.0.13...v1.0.14) (2025-12-17)
 
 
