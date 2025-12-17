@@ -1,3 +1,10 @@
+## [1.0.14](https://github.com/programisto-labs/edrm-prometheus/compare/v1.0.13...v1.0.14) (2025-12-17)
+
+
+### Bug Fixes
+
+* add swagger ([92a445d](https://github.com/programisto-labs/edrm-prometheus/commit/92a445d7e2b8d6a17f979dfeb4efabf09a0d877c))
+
 ## [1.0.13](https://github.com/programisto-labs/edrm-prometheus/compare/v1.0.12...v1.0.13) (2025-11-26)
 
 
