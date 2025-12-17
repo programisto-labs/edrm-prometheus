@@ -50,6 +50,19 @@ class PrometheusRouter extends EnduranceRouter {
         permissions: []
       };
 
+      /**
+       * @swagger
+       * /:
+       *   get:
+       *     summary: Exposer les métriques Prometheus
+       *     description: Retourne les métriques collectées au format que Prometheus peut scrapper. L'accès est restreint aux IP autorisées.
+       *     tags: [Prometheus]
+       *     responses:
+       *       200:
+       *         description: Métriques exposées au format texte
+       *       403:
+       *         description: Accès interdit pour l'adresse IP appelante
+       */
       this.get('/', securityOptions, (req: any, res: any) =>
         this.getMetrics(req, res, this.register));
     }
